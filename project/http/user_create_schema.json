@@ -1,0 +1,31 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "email": {
+            "type": "string",
+            "format": "email"
+        },
+        "name": {
+            "type": "string",
+            "maxLength": 100
+        },
+        "password": {
+            "type": "string",
+            "maxLength": 128
+        },
+        "remember_token": {
+            "type": "string"
+        },
+        "memo": {
+            "type": "string"
+        },
+        "consent": {
+            "type": "boolean",
+            "const": true
+        }
+    },
+    "required": ["email", "name", "consent"],
+    "additionalProperties": false
+  }
+  

@@ -1,0 +1,68 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "anyOf": [
+        {
+            "properties": {
+                "email": {
+                  "type": "string",
+                  "format": "email"
+                }
+            },
+            "required": ["email"]
+        },
+        {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "maxLength": 100
+                }
+            },
+            "required": ["name"]
+        },
+        {
+            "properties": {
+                "password": {
+                    "type": "string",
+                    "maxLength": 128
+                }
+            },
+            "required": ["password"]
+        },
+        {
+            "properties": {
+                "remember_token": {
+                    "type": "string"
+                }
+            },
+            "required": ["remember_token"]
+        },
+        {
+            "properties": {
+                "memo": {
+                    "type": "string"
+                }
+            },
+            "required": ["memo"]
+        },
+        {
+            "properties": {
+                "consent": {
+                    "type": "boolean"
+                }
+            },
+            "required": ["consent"]
+        }
+        ,
+        {
+            "properties": {
+                "email_confirmed": {
+                    "type": "boolean",
+                    "const": true
+                }
+            },
+            "required": ["email_confirmed"]
+        }
+    ]
+}
+  
