@@ -20,6 +20,9 @@ instance/*.log*
 # Virtual Environment
 /venv/
 
+# Ignore local lock files
+poetry.lock
+
 # pytest files
 .pytest_cache/
 

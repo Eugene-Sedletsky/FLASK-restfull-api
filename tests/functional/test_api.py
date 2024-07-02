@@ -1,13 +1,12 @@
-"""
-This file (test_api.py) contains the functional tests for the API functions
-"""
+"""Functional tests for the API"""
 import re
 
 
 def test_default_status_response(test_client):
-    """
-    GIVEN a Flask application configured for testing
+    """GIVEN a Flask application configured for testing
+
     WHEN the '/' page is requested (GET)
+
     THEN response must be 200
     """
 
@@ -16,9 +15,10 @@ def test_default_status_response(test_client):
 
 
 def test_get_user_empty_collection(test_client):
-    """
-    GIVEN a Flask application configured for testing
+    """GIVEN a Flask application configured for testing
+
     WHEN the '/users' page is requested (GET) on fresh instance
+
     THEN must not have any users
     """
 
@@ -27,9 +27,10 @@ def test_get_user_empty_collection(test_client):
 
 
 def test_create_user_response_contain_user_fields(test_client):
-    """
-    GIVEN a Flask application configured for testing
+    """GIVEN a Flask application configured for testing
+
     WHEN the '/users' page is requested by (POST) with data
+
     THEN must return new user data
     """
 
@@ -49,16 +50,17 @@ def test_create_user_response_contain_user_fields(test_client):
     assert 'name' in json_data
     assert 'email' in json_data
     assert 'consent' in json_data
-    assert not 'password' in json_data
+    assert 'password' not in json_data
     assert 'email_verified_at' in json_data
     assert 'remember_token' in json_data
     assert 'memo' in json_data
 
 
 def test_create_user_from_valid_data(test_client):
-    """
-    GIVEN a Flask application configured for testing
+    """GIVEN a Flask application configured for testing
+
     WHEN adding a new user with valid data
+
     THEN response must return new user data
     """
 
@@ -80,7 +82,7 @@ def test_create_user_from_valid_data(test_client):
     assert 'name' in json_data
     assert 'email' in json_data
     assert 'consent' in json_data
-    assert not 'password' in json_data
+    assert 'password' not in json_data
     assert 'email_verified_at' in json_data
     assert 'remember_token' in json_data
     assert 'memo' in json_data
@@ -94,9 +96,10 @@ def test_create_user_from_valid_data(test_client):
 
 
 def test_create_user_constraint_empty_name(test_client):
-    """
-    GIVEN a Flask application configured for testing
+    """GIVEN a Flask application configured for testing
+
     WHEN adding a new user with valid data
+
     THEN response should return new user data
     """
 
@@ -112,9 +115,10 @@ def test_create_user_constraint_empty_name(test_client):
 
 
 def test_create_user_constraint_empty_email(test_client):
-    """
-    GIVEN a Flask application configured for testing
+    """GIVEN a Flask application configured for testing
+
     WHEN adding a new user without an email
+
     THEN response should return an error
     """
 
@@ -130,9 +134,10 @@ def test_create_user_constraint_empty_email(test_client):
 
 
 def test_create_user_constraint_empty_consent(test_client):
-    """
-    GIVEN a Flask application configured for testing
+    """GIVEN a Flask application configured for testing
+
     WHEN adding a new user without a consent property
+
     THEN response should return an error
     """
 
@@ -148,9 +153,10 @@ def test_create_user_constraint_empty_consent(test_client):
 
 
 def test_create_user_constraint_without_consent(test_client):
-    """
-    GIVEN a Flask application configured for testing
+    """GIVEN a Flask application configured for testing
+
     WHEN adding a new user without a consent
+
     THEN response should return an error
     """
 
@@ -167,9 +173,10 @@ def test_create_user_constraint_without_consent(test_client):
 
 
 def test_create_user_with_existing_email_constrain(test_client):
-    """
-    GIVEN a Flask application configured for testing
+    """GIVEN a Flask application configured for testing
+
     WHEN adding a two new users without same email
+
     THEN response should return an error
     """
 
@@ -191,9 +198,10 @@ def test_create_user_with_existing_email_constrain(test_client):
 
 
 def test_get_created_user(test_client):
-    """
-    GIVEN a Flask application configured for testing
+    """GIVEN a Flask application configured for testing
+
     WHEN adding a new users
+
     THEN we must able to retrieve this user by GET request,
          return data must be without a password field
     """
@@ -219,7 +227,7 @@ def test_get_created_user(test_client):
     assert 'name' in json_data
     assert 'email' in json_data
     assert 'consent' in json_data
-    assert not 'password' in json_data
+    assert 'password' not in json_data
     assert 'email_verified_at' in json_data
     assert 'remember_token' in json_data
     assert 'memo' in json_data
@@ -233,9 +241,10 @@ def test_get_created_user(test_client):
 
 
 def test_get_not_existing_user(test_client):
-    """
-    GIVEN a Flask application configured for testing
+    """GIVEN a Flask application configured for testing
+
     WHEN we requesting data for non existing user
+
     THEN response should return an error 404
     """
 
@@ -246,9 +255,10 @@ def test_get_not_existing_user(test_client):
 
 
 def test_user_deletion(test_client):
-    """
-    GIVEN a Flask application configured for testing
+    """GIVEN a Flask application configured for testing
+
     WHEN we added user and then we deleting this user
+
     THEN response for delete should be 202,
          consecutive deletion request must return an error 404
     """
@@ -278,9 +288,10 @@ def test_user_deletion(test_client):
 
 
 def test_deletion_not_existing_user(test_client):
-    """
-    GIVEN a Flask application configured for testing
+    """GIVEN a Flask application configured for testing
+
     WHEN we requesting data deletion for non existing user
+
     THEN response must return an error 404
     """
 
@@ -293,9 +304,11 @@ def test_deletion_not_existing_user(test_client):
 
 
 def test_user_create_with_unexpected_payload(test_client):
-    """
-    GIVEN a Flask application configured for testing
-    WHEN we requesting user to be created and our request contain unexpected data, like ID
+    """GIVEN a Flask application configured for testing
+
+    WHEN we requesting user to be created and our request contain
+    unexpected data, like ID
+
     THEN response must return an error 400
     """
 
@@ -313,9 +326,11 @@ def test_user_create_with_unexpected_payload(test_client):
 
 
 def test_update_user_by_unexpected_data(test_client):
-    """
-    GIVEN a Flask application configured for testing
-    WHEN we requesting user to be updated and our request contain unexpected data, like ID
+    """GIVEN a Flask application configured for testing
+
+    WHEN we requesting user to be updated and our request contain
+    unexpected data, like ID
+
     THEN response must return an error 400
     """
 
@@ -331,9 +346,10 @@ def test_update_user_by_unexpected_data(test_client):
 
 
 def test_update_not_existing_user(test_client):
-    """
-    GIVEN a Flask application configured for testing
+    """GIVEN a Flask application configured for testing
+
     WHEN we requesting non existing user to be updated
+
     THEN response must return an error 404
     """
 
@@ -349,9 +365,10 @@ def test_update_not_existing_user(test_client):
 
 
 def test_user_update_email(test_client):
-    """
-    GIVEN a Flask application configured for testing
+    """GIVEN a Flask application configured for testing
+
     WHEN we requesting user email to be updated
+
     THEN response must return an error 200
     """
 
@@ -380,10 +397,11 @@ def test_user_update_email(test_client):
 
 
 def test_user_verify_email(test_client):
-    """
-    GIVEN a Flask application configured for testing
+    """GIVEN a Flask application configured for testing
+
     WHEN we creating user, email must be marked as not verified,
-         with consecutive email confirmed update request
+    with consecutive email confirmed update request
+
     THEN response must return an error 200, and email_verified_at must be set
     """
 
@@ -414,7 +432,7 @@ def test_user_verify_email(test_client):
 
     json_data = response.json
 
-    assert not json_data['email_verified_at'] is None
+    assert json_data['email_verified_at'] is not None
 
     # Define the pattern using regular expressions
     pattern = r"^\w{3}, \d{2} \w{3} \d{4} \d{2}:\d{2}:\d{2} \w{3}$"
@@ -423,16 +441,20 @@ def test_user_verify_email(test_client):
     match = re.match(pattern, json_data['email_verified_at'])
 
     # Assert that the string matches the pattern
-    assert match is not None, "Date string does not match the expected pattern."
+    assert match is not None, (
+        "Date string does not match the expected pattern."
+    )
 
 
 
 def test_user_revoke_consent(test_client):
-    """
-    GIVEN a Flask application configured for testing
-    WHEN the '/users' page is requested by (POST) with data and consequentially user was revoking
-         consent on existing record
-    THEN User record should be deleted from the database, consecutive get request must fail with 404
+    """GIVEN a Flask application configured for testing
+    
+    WHEN the '/users' page is requested by (POST) with data and
+    consequentially user was revoking consent on existing record
+
+    THEN User record should be deleted from the database, consecutive
+    get request must fail with 404
     """
 
     data = {

@@ -8,7 +8,9 @@ With microservice in mind, this project implement basic CRUD functionality to ma
     - User can be added to database as long as consent been provided.
     - In case of revoking consent, user will be deleted from database.
 
-
+```command
+ poetry run python -m pytest --cov-report term-missing --cov=project
+```
 ![test-coverage.png](doc%2Ftest-coverage.png)
 Figure: Test coverage report
 
