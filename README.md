@@ -14,6 +14,9 @@ With microservice in mind, this project implement basic CRUD functionality to ma
 ![test-coverage.png](doc%2Ftest-coverage.png)
 Figure: Test coverage report
 
+```command
+ poetry run pylint .\tests\ .\project\
+```
 ![test-coverage.png](doc%2Fpylint-code-quality.png)
 Figure: PyLint code quality report
 
