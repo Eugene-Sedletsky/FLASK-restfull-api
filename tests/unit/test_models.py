@@ -4,7 +4,7 @@ This file (test_models.py) contains the unit tests for the users.py file.
 import unittest
 
 from project.models.user import User # pylint: disable=import-error
-from project.exceptions.UserConsentRevoked import UserConsentRevoked # pylint: disable=import-error
+from project.exceptions.user_consent_revoked import UserConsentRevoked # pylint: disable=import-error
 
 
 class TestUserModel(unittest.TestCase):

@@ -29,3 +29,7 @@ jobs:
     - name: Analysing the code with pylint
       run: |
         poetry run pylint $(git ls-files '*.py')
+
+    - name: Running tests
+      run: |
+        poetry run python -m pytest --cov-report term-missing --cov=project
