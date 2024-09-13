@@ -26,6 +26,11 @@ jobs:
       run: |
         poetry install
 
+    # Set PYTHONPATH to include the project directory
+    - name: Set PYTHONPATH
+      run: |
+        echo "PYTHONPATH=$PYTHONPATH:$(pwd)" >> $GITHUB_ENV
+        
     - name: Running tests
       run: |
         poetry run python -m pytest --cov-report term-missing --cov=project
