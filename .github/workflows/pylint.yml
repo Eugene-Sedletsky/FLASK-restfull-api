@@ -26,10 +26,10 @@ jobs:
       run: |
         poetry install
 
-    - name: Analysing the code with pylint
-      run: |
-        poetry run pylint .\tests\ .\project\
-
     - name: Running tests
       run: |
         poetry run python -m pytest --cov-report term-missing --cov=project
+
+    - name: Analysing the code with pylint
+      run: |
+        poetry run pylint .\tests\ .\project\
