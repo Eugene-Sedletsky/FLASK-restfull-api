@@ -37,4 +37,4 @@ jobs:
 
     - name: Analysing the code with pylint
       run: |
-        poetry run pylint .\tests\ .\project\
+        poetry run pylint tests/ project/
