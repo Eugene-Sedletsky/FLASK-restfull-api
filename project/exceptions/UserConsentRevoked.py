@@ -1,3 +1,5 @@
+"""Dummy class
+"""
 class UserConsentRevoked(Exception):
     """Exception raised when an user entity consent is updated to false."""
 
