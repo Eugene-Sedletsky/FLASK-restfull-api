@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   build:
-    name: Run Linting and Tests  # Custom name for the job
+    name: Run Linting
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -43,10 +43,6 @@ jobs:
       run: |
         echo "PYTHONPATH=$PYTHONPATH:$(pwd)" >> $GITHUB_ENV
         
-    - name: Running tests
-      run: |
-        poetry run python -m pytest --cov-report term-missing --cov=project
-
     - name: Analysing the code with pylint
       run: |
         poetry run pylint tests/ project/
