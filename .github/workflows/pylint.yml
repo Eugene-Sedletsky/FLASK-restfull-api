@@ -28,7 +28,7 @@ jobs:
 
     - name: Analysing the code with pylint
       run: |
-        poetry run pylint $(git ls-files '*.py')
+        poetry run pylint .\tests\ .\project\
 
     - name: Running tests
       run: |
