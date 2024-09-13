@@ -67,18 +67,11 @@ $ source venv/bin/activate
 
 ### 2. Install dependencies
 
-Install the python packages specified in requirements.txt:
+We're using poetry and make commands
+will install dependencies and configure test database
 
 ```sh
-(venv) $ pip install -r requirements.txt
-```
-
-### 3 Database Initialization
-
-This Flask application needs a SQLite database to store data. The database could be be initialized using:
-
-```
-(venv) $ flask init_db
+(venv) $ make setup
 ```
 
 
@@ -87,7 +80,7 @@ This Flask application needs a SQLite database to store data. The database could
 Run development server to serve the Flask application:
 
 ```sh
-(venv) $ flask --app app --debug run
+(venv) $ make debug
 ```
 
 Navigate to 'http://127.0.0.1:5000' in your favorite web browser to view the website!
@@ -97,18 +90,11 @@ Navigate to 'http://127.0.0.1:5000' in your favorite web browser to view the web
 
 ### To run all the tests:
 
-```sh
-(venv) $ python -m pytest -v
-```
-
-### To check test coverage
-
-To check the code coverage of the tests:
+Will check test coverage.
 
 ```sh
-(venv) $ python -m pytest --cov-report term-missing --cov=project
+(venv) $ make test
 ```
-
 
 ## Key Python Modules Used
 
@@ -131,7 +117,7 @@ To check the code coverage of the tests:
 
 * **python-dotenv** - .env. for test environment
 * **dotenv** - loading .env for production environment
-* **Flask** - 
+
 
 
 
