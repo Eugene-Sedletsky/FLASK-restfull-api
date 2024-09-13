@@ -4,6 +4,7 @@ on: [push]
 
 jobs:
   build:
+    name: Run Linting and Tests  # Custom name for the job
     runs-on: ubuntu-latest
     strategy:
       matrix:
