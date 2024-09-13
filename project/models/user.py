@@ -8,7 +8,7 @@ from sqlalchemy.orm import class_mapper
 from werkzeug.security import check_password_hash, generate_password_hash
 from project import db
 
-from project.exceptions.UserConsentRevoked import UserConsentRevoked
+from project.exceptions.user_consent_revoked import UserConsentRevoked
 
 # pylint: disable=too-many-instance-attributes
 class User(db.Model):

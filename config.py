@@ -4,7 +4,9 @@ import os
 # Determine the folder of the top-level directory of this project
 BASEDIR = os.path.abspath(os.path.dirname(__file__))
 
-class Config(object):
+# pylint: disable=too-few-public-methods
+class Config():
+    """Config provider"""
     FLASK_ENV = 'development'
     DEBUG = False
     TESTING = False
@@ -29,19 +31,23 @@ class Config(object):
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-
+# pylint: disable=too-few-public-methods
 class TestingConfig(Config):
+    """Config provider for automated tests."""
     TESTING = True
-    db_path = os.path.join(BASEDIR,'instance','test.db')
+    db_path = os.path.join(BASEDIR, 'instance', 'test.db')
     default_url = f"sqlite:///{db_path}"
 
     database_url = os.getenv( 'TEST_DATABASE_URI', default=default_url)
 
     SQLALCHEMY_DATABASE_URI = database_url
 
-
+# pylint: disable=too-few-public-methods
 class DevelopmentConfig(Config):
+    """Config provider for dev env."""
     DEBUG = True
 
+# pylint: disable=too-few-public-methods
 class ProductionConfig(Config):
+    """Config provider for prod env."""
     FLASK_ENV = 'production'

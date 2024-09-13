@@ -11,7 +11,7 @@ from sqlalchemy.orm.exc import NoResultFound
 
 from project import db
 from project.models.user import User
-from project.exceptions.UserConsentRevoked import UserConsentRevoked
+from project.exceptions.user_consent_revoked import UserConsentRevoked
 
 controller_blueprint = Blueprint('user_resources', __name__)
 
