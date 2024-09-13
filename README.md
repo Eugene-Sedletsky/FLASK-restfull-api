@@ -1,6 +1,6 @@
 # Scaffolding for RestFULL api service in FLASK
 
-[![Build Status](https://github.com/Eugene-Sedletsky/FLASK-restfull-api/actions/workflows/python-poetry.yml/badge.svg)](https://github.com/Eugene-Sedletsky/FLASK-restfull-api/actions)
+[![Build Status](https://github.com/Eugene-Sedletsky/FLASK-restfull-api/actions/workflows/pylint.yml/badge.svg)](https://github.com/Eugene-Sedletsky/FLASK-restfull-api/actions)
 
 This is JSON based RESTfull API service, designed to be in trusted network, where you don't need to validate access levels of requestor (think microservice and Ambassador/Proxy)
 
